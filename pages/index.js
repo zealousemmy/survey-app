@@ -1,11 +1,21 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
-export default function Home() {
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from "@mui/material";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import RegisterUser from "../components/register";
+import { Body } from "../universalComponents/Body";
+export default function Home({ theme }) {
   return (
-    <div>
-      <h1> </h1>
-    </div>
-  )
+    <Body className={"header"} color={theme}>
+      <h1>We Value Your Opinion</h1>
+      <RegisterUser />
+    </Body>
+  );
 }
