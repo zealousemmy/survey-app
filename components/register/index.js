@@ -1,15 +1,20 @@
-import { TextField } from "@mui/material";
-import React from "react";
 import { StyledRegister } from "./register.style";
+import SuccessFull from "../Successful";
+import UserPage from "../userPage";
+import { withTheme } from "styled-components";
+import SurveryPage from "../SurveyPage";
+import { useState } from "react";
+import Modal from "../Modal";
 
-const RegisterUser = () => {
+const RegisterUser = ({ theme }) => {
+  const [surData, setSurData] = useState();
   return (
-    <StyledRegister>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+    <StyledRegister color={theme}>
+      {!surData && <UserPage SetSurData={setSurData} SurData={surData} />}
+      {surData && <SurveryPage SurData={surData} />}
+      {/* <Modal /> */}
     </StyledRegister>
   );
 };
 
-export default RegisterUser;
+export default withTheme(RegisterUser);

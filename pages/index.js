@@ -10,23 +10,19 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import RegisterUser from "../components/register";
-export default function Home() {
+import { Body } from "../universalComponents/Body";
+import { withTheme } from "styled-components";
+
+function Home({ theme }) {
   return (
-    <div>
-      <h1>We Value Your Opinion</h1>
-      {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group"
-        >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-        </RadioGroup>
-      </FormControl> */}
+    <Body color={theme}>
+      <div className={"header"}>
+        <h1>We Value Your Opinion</h1>
+        <p>a minute survey...</p>
+      </div>
       <RegisterUser />
-    </div>
+    </Body>
   );
 }
+
+export default withTheme(Home);
