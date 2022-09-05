@@ -10,9 +10,9 @@ const RegisterUser = ({ theme }) => {
   const [surData, setSurData] = useState();
   return (
     <StyledRegister color={theme}>
-      {/* {!surData && <UserPage SetSurData={setSurData} SurData={surData} />}
-      {surData && <SurveryPage SurData={surData} />} */}
-      <Modal />
+      {!surData && <UserPage SetSurData={setSurData} SurData={surData} />}
+      {surData && <SurveryPage SurData={surData} />}
+      {/* <Modal /> */}
     </StyledRegister>
   );
 };
