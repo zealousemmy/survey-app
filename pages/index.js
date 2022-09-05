@@ -11,11 +11,18 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import RegisterUser from "../components/register";
 import { Body } from "../universalComponents/Body";
-export default function Home({ theme }) {
+import { withTheme } from "styled-components";
+
+function Home({ theme }) {
   return (
-    <Body className={"header"} color={theme}>
-      <h1>We Value Your Opinion</h1>
+    <Body color={theme}>
+      <div className={"header"}>
+        <h1>We Value Your Opinion</h1>
+        <p>a minute survey...</p>
+      </div>
       <RegisterUser />
     </Body>
   );
 }
+
+export default withTheme(Home);

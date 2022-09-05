@@ -14,11 +14,13 @@ const UserInfoSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
+    unique: true,
     trim: true,
     required: [true, "must provide pasword"],
   },
-  check: {
+  taken: {
     type: Boolean,
+    required: [true, "must provide check"],
     default: false,
   },
 });
