@@ -54,7 +54,7 @@ const FormComp = ({
                             </div>
                         ) : item.select ? (
                             <div className="select-container">
-                                <FormControl className="css-1nrlq1o-MuiFormControl-root">
+                                <FormControl>
                                     <InputLabel id={item.label}>
                                         {item.label}
                                     </InputLabel>
