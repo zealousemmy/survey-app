@@ -53,6 +53,7 @@ export const FormDiv = styled.div`
         }
     }
     .select-container {
+        width: 100%;
         .css-1nrlq1o-MuiFormControl-root {
             width: 96%;
             text-align: left;
