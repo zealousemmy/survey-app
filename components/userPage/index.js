@@ -44,8 +44,6 @@ const UserPage = ({ SetSurData, setModal, theme, setShowUser }) => {
     onSubmit: handleOnSubmit,
   });
 
-  console.log(userformik.values);
-
   const setInputValue = useCallback(
     (e) => {
       const { name, value } = e.target;
