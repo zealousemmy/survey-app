@@ -14,6 +14,11 @@ const UserInfoSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
+    trim: true,
+    required: [true, "must provide network"],
+  },
+  phone: {
+    type: String,
     unique: true,
     trim: true,
     required: [true, "must provide pasword"],
@@ -22,6 +27,11 @@ const UserInfoSchema = new mongoose.Schema({
     type: Boolean,
     required: [true, "must provide check"],
     default: false,
+  },
+  phoneVerificationCode: {
+    type: Number,
+    minlength: 4,
+    maxlenght: 4,
   },
 });
 

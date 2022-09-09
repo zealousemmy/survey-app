@@ -7,10 +7,14 @@ import {
     TextField,
     Button,
     Box,
+    Select,
+    MenuItem,
+    InputLabel,
 } from "@mui/material";
 import React from "react";
 import { withTheme } from "styled-components";
 import { FormDiv } from "./form.style";
+import SpinnerMain from "../Spinner";
 
 const FormComp = ({
     formArr,
@@ -19,6 +23,7 @@ const FormComp = ({
     setInputValue,
     details,
     HandleNext,
+    sending,
 }) => {
     return (
         <FormDiv color={theme}>
@@ -28,6 +33,7 @@ const FormComp = ({
                         {item.submit ? (
                             <div className={`${item.classname}`}>
                                 <Button
+                                    // disabled={sending && disabled}
                                     onClick={() => {
                                         details === "user" &&
                                             formik.handleSubmit();
@@ -45,6 +51,34 @@ const FormComp = ({
                                 >
                                     {item.submit}
                                 </Button>
+                            </div>
+                        ) : item.select ? (
+                            <div className="select-container">
+                                <FormControl>
+                                    <InputLabel id={item.label}>
+                                        {item.label}
+                                    </InputLabel>
+                                    <Select
+                                        labelId={item.label}
+                                        id={item.id}
+                                        // multiple
+                                        name={item.name}
+                                        label={item.label}
+                                        onChange={setInputValue}
+                                    >
+                                        {item.valueArray.map((item, key) => (
+                                            <MenuItem
+                                                key={key}
+                                                value={item.value}
+                                            >
+                                                {item.value}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                                <div className="errorcheck">
+                                    <small>{formik.errors.network}</small>
+                                </div>
                             </div>
                         ) : item.text ? (
                             <div className={`${item.classname}`}>
@@ -104,6 +138,7 @@ const FormComp = ({
                         )}
                     </div>
                 ))}
+                {sending && <SpinnerMain sending={sending} />}
             </Box>
         </FormDiv>
     );

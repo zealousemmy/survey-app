@@ -30,4 +30,20 @@ export const SuccessfulDiv = styled.div`
       color: ${({ color }) => color.companyBackground};
     }
   }
+
+  .redirect {
+    margin: 20px 0px;
+
+    button {
+      border: none;
+      outline: none;
+      background-color: ${({ color }) => color.companyBackground};
+      color: ${({ color }) => color.primary};
+      padding: 10px 12px;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  }
 `;

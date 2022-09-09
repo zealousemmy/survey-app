@@ -3,7 +3,7 @@ import { SuccessfulDiv } from "./success.style";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { withTheme } from "styled-components";
 
-const SuccessFull = ({ theme, name }) => {
+const SuccessFull = ({ theme, name, setShowSuccess, HandleRedirect }) => {
   return (
     <SuccessfulDiv color={theme}>
       <div>
@@ -15,6 +15,16 @@ const SuccessFull = ({ theme, name }) => {
         </div>
         <div className={"footer"}>
           <p>{`thanks for your opinion, ${name}`}</p>
+        </div>
+        <div className="redirect">
+          <button
+            onClick={() => {
+              setShowSuccess("");
+              HandleRedirect();
+            }}
+          >
+            Take new Survey
+          </button>
         </div>
       </div>
     </SuccessfulDiv>

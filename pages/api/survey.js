@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       console.log(req.body, "from server side");
-      await Surveyinfos.create(req.body);
+      await Surveyinfos.create({ ...req.body });
       res.status(200).send({ message: "successful" });
     } catch (err) {
       res.status(500).send({ msg: err.message });

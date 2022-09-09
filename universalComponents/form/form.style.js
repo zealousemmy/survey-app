@@ -20,7 +20,11 @@ export const FormDiv = styled.div`
     }
 
     .submitbody {
-        margin: 40px 0px 0px 0px;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+        /* margin: 40px 0px 0px 0px; */
         padding: 10px 0px;
         .submitclass {
             .submititem {
@@ -37,12 +41,26 @@ export const FormDiv = styled.div`
     }
 
     .submitradiobody {
-        margin: 20px 0px 0px 0px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        margin: 20px 0px 15px 0px;
         padding: 10px 0px;
         .submitradioclass {
             .submitradioitem {
                 font-weight: 800;
             }
+        }
+    }
+    .select-container {
+        .css-1nrlq1o-MuiFormControl-root {
+            width: 96%;
+            text-align: left;
+        }
+        .errorcheck {
+            padding: 0px 15px;
+            color: red;
+            text-align: left;
         }
     }
 `;

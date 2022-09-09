@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Body = styled.div`
     .header {
         color: ${({ color }) => color.Gold};
-        padding: 10px 5px;
-        margin: 10px 0px;
+        padding: 5px 5px;
+        margin: 5px 0px;
 
         h1 {
             font-size: 24px;

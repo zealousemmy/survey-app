@@ -11,34 +11,35 @@ export const ModalStyles = styled.div`
     overflow:auto;
     margin: auto;
     background-color:rgb(0,0,0);
-    background-color:rgba(0,0,0,0.4)}
+    background-color:rgba(0,0,0,0.4)};
 
- 
+    .modal-component{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
 
         .modal-content{
             background-color: #fff;
             width: 50%;
-            margin: 10px auto;
+            margin: 0px auto;
             display: flex;
+            align-items: center;
             justify-content: center;
             border-radius: 8px;
+            padding: 30px 10px;
+            
+            .content{
+                padding: 20px 10px;
 
-            .modal-component{
-                /* margin: 30px 10px; */
-                background-color: #fff;
-            }
-    
-            .icon{
-                z-index: 4;
-                color: #fff;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                font-size: 42px;
-                cursor: pointer;
-                margin: 20px;
+                .button{
+                    margin: 100px 0px 10px 0px;
+                }
+
             }
         }
+    }
     
 
 `;

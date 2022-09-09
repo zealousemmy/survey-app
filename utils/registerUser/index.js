@@ -20,6 +20,13 @@ export const registerArr = [
     classitem: "textitem",
   },
   {
+    select: "select",
+    label: "Phone Network",
+    name: "network",
+    id: "network",
+    valueArray: [{ value: "MTN" }, { value: "AIRTEL" }, { value: "GLO" }],
+  },
+  {
     id: "phone",
     label: "Phone",
     name: "phone",

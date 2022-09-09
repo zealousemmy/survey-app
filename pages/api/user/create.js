@@ -1,5 +1,5 @@
-import connectDB from "../../db/connect";
-import UserInfos from "../../db/userinfoschema";
+import connectDB from "../../../db/connect";
+import __User from "../../../db/userinfoschema";
 
 export default async function handler(req, res) {
   connectDB().catch((err) => console.log(err.message));
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const { email, phone, name } = req.body;
-      const isFound = await UserInfos.findOne({
+      const isFound = await __User.findOne({
         $or: [{ email: email }, { phone: phone }],
       });
 
@@ -22,7 +22,12 @@ export default async function handler(req, res) {
           .status(200)
           .send({ message: "required field is missing a vlaue" });
       }
-      const user = await UserInfos.create({ email, phone, name });
+      const user = await __User.create({
+        email,
+        phone,
+        name,
+        phoneVerificationCode: 2334,
+      });
       res.status(200).send({ user, message: "successful" });
     } catch (err) {
       console.log(err);
@@ -32,7 +37,7 @@ export default async function handler(req, res) {
 
   if (req.method === "PUT") {
     try {
-      await UserInfos.findOneAndUpdate(req.body);
+      await __User.findOneAndUpdate(req.body);
       res.status(200).send({ message: "successful" });
     } catch (err) {
       res.status(500).send({ msg: err.message });

@@ -5,6 +5,8 @@ import { useFormik } from "formik";
 import SuccessFull from "../Successful";
 import { SurveyDiv } from "./survey.style";
 import Axios from "axios";
+import { UserDiv } from "../userPage/user.style";
+import { withTheme } from "styled-components";
 
 const surveySchema = yup.object().shape({
   gender: yup.string().min(1).required(),
@@ -20,7 +22,7 @@ const surveySchema = yup.object().shape({
   affliate_program: yup.string().required(),
 });
 
-const SurveryPage = ({ SurData }) => {
+const SurveryPage = ({ SurData, theme, HandleRedirect }) => {
   const [surveyTest, setSurveyTest] = useState({});
   const [surveyPage, setSurveyPage] = useState(SurData[0]);
   const [surveylength, setSurveyLength] = useState(1);
@@ -90,25 +92,34 @@ const SurveryPage = ({ SurData }) => {
       setSurveyLength(surveylength + 1);
       return;
     }
+    let userStore = JSON.parse(window.sessionStorage.getItem("user"));
 
-    PostSurvey({ ...surveyTest, userId: user._id });
+    PostSurvey({ ...surveyTest, user: userStore._id });
     // PostUser({ ...user });
   };
 
   return (
-    <SurveyDiv>
-      {!showSuccess && (
-        <FormComp
-          formArr={surveyPage.section}
-          formik={surveyformik}
-          setInputValue={HandleChange}
-          HandleNext={HandleNext}
-        />
-      )}
+    <UserDiv color={theme}>
+      <SurveyDiv>
+        {!showSuccess && (
+          <FormComp
+            formArr={surveyPage.section}
+            formik={surveyformik}
+            setInputValue={HandleChange}
+            HandleNext={HandleNext}
+          />
+        )}
 
-      {showSuccess && <SuccessFull name={user?.name} />}
-    </SurveyDiv>
+        {showSuccess && (
+          <SuccessFull
+            name={user?.name}
+            setShowSuccess={setShowSuccess}
+            HandleRedirect={HandleRedirect}
+          />
+        )}
+      </SurveyDiv>
+    </UserDiv>
   );
 };
 
-export default SurveryPage;
+export default withTheme(SurveryPage);

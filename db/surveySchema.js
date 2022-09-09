@@ -57,7 +57,7 @@ const SurveyInfoSchema = new mongoose.Schema({
     required: [true, "must provide social_media_text"],
   },
   user: {
-    type: mongoose.SchemaType,
+    type: mongoose.Schema.Types.ObjectId,
   },
 });
 

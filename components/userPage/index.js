@@ -7,10 +7,13 @@ import Axios from "axios";
 import { SurveyArray } from "../../utils/registerUser/surveyArray";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserDiv } from "./user.style";
+import { withTheme } from "styled-components";
 
 const schema = yup.object().shape({
   name: yup.string().min(3).required(),
   email: yup.string().email().min(3).required(),
+  network: yup.string().required(),
   phone: yup
     .string()
     .matches(
@@ -21,10 +24,12 @@ const schema = yup.object().shape({
   taken: yup.boolean().default(false),
 });
 
-const UserPage = ({ SetSurData }) => {
+const UserPage = ({ SetSurData, setModal, theme, setShowUser }) => {
   const Notify = (value) => toast(value);
+  const [sending, setSending] = useState(false);
 
   const handleOnSubmit = (values) => {
+    setSending(true);
     PostUser(values);
   };
 
@@ -32,11 +37,14 @@ const UserPage = ({ SetSurData }) => {
     initialValues: {
       name: "",
       email: "",
+      network: "",
       phone: "",
     },
     validationSchema: schema,
     onSubmit: handleOnSubmit,
   });
+
+  console.log(userformik.values);
 
   const setInputValue = useCallback(
     (e) => {
@@ -51,34 +59,44 @@ const UserPage = ({ SetSurData }) => {
   );
 
   const PostUser = (data) => {
-    Axios.post("/api/user", data)
+    Axios.post("/api/user/create", data)
       .then((res) => {
         Notify(res.data.message);
+
         if (res.data.message === "successful") {
-          Notify(res.data.message);
-          if (typeof window !== "undefined") {
+          if (typeof window !== undefined) {
             window.sessionStorage.setItem(
               "user",
               JSON.stringify(res.data.user)
             );
           }
           SetSurData(SurveyArray);
+          setShowUser(false);
+          setModal(true);
+          setSending(false);
         }
+        setSending(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setSending(false);
+      });
   };
 
   return (
-    <div>
-      <FormComp
-        formArr={registerArr}
-        formik={userformik}
-        setInputValue={setInputValue}
-        details={"user"}
-      />
-      <ToastContainer />
-    </div>
+    <UserDiv color={theme}>
+      <div>
+        <FormComp
+          formArr={registerArr}
+          formik={userformik}
+          setInputValue={setInputValue}
+          details={"user"}
+          sending={sending}
+        />
+        <ToastContainer />
+      </div>
+    </UserDiv>
   );
 };
 
-export default UserPage;
+export default withTheme(UserPage);
