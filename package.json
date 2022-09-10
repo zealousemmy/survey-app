@@ -23,6 +23,7 @@
     "react-icons": "^4.4.0",
     "react-input-pin-code": "^1.2.0",
     "react-input-verification-code": "^1.0.2",
+    "react-phone-number-input": "^3.2.11",
     "react-spinners": "^0.13.4",
     "react-toastify": "^9.0.8",
     "styled-components": "^5.3.5",

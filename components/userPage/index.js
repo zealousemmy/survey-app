@@ -44,6 +44,8 @@ const UserPage = ({ SetSurData, setModal, theme, setShowUser }) => {
     onSubmit: handleOnSubmit,
   });
 
+  console.log(userformik.values);
+
   const setInputValue = useCallback(
     (e) => {
       const { name, value } = e.target;
@@ -55,6 +57,13 @@ const UserPage = ({ SetSurData, setModal, theme, setShowUser }) => {
     },
     [userformik]
   );
+
+  const setPhoneValue = (value) => {
+    userformik.setValues({
+      ...userformik.values,
+      ["phone"]: value,
+    });
+  };
 
   const PostUser = (data) => {
     Axios.post("/api/user/create", data)
@@ -90,6 +99,7 @@ const UserPage = ({ SetSurData, setModal, theme, setShowUser }) => {
           setInputValue={setInputValue}
           details={"user"}
           sending={sending}
+          setPhoneValue={setPhoneValue}
         />
         <ToastContainer />
       </div>

@@ -31,10 +31,8 @@ export const registerArr = [
     label: "Phone",
     name: "phone",
     type: "text",
-    text: "name",
-    classbody: "textbody",
-    classname: "textclass",
-    classitem: "textitem",
+    text: "phone",
+    classbody: "phonemainbody",
   },
   {
     submit: "Proceed",

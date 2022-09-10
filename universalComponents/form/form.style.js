@@ -1,6 +1,34 @@
 import styled from "styled-components";
 
 export const FormDiv = styled.div`
+    .phonemainbody {
+        margin: 10px 0px;
+        padding: 10px 0px;
+
+        .phonebody {
+            display: flex;
+            justify-content: center;
+
+            .phone {
+                width: 96%;
+                border: 1px solid #c4c4c4;
+                padding: 0px 5px;
+                border-radius: 4px;
+
+                &:hover {
+                    border: 1px solid #000;
+                }
+
+                input {
+                    padding: 10px 12px;
+                    border: none;
+                    outline: none;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
     .textbody {
         margin: 10px 0px;
         padding: 10px 15px;

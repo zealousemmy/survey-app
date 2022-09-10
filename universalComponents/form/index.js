@@ -11,10 +11,13 @@ import {
     MenuItem,
     InputLabel,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { withTheme } from "styled-components";
 import { FormDiv } from "./form.style";
 import SpinnerMain from "../Spinner";
+
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 const FormComp = ({
     formArr,
@@ -24,7 +27,15 @@ const FormComp = ({
     details,
     HandleNext,
     sending,
+    setPhoneValue,
 }) => {
+    const [values, setValues] = useState();
+    console.log(values);
+
+    // const handleSChange = (value) => {
+    //     setValues(value);
+    // };
+
     return (
         <FormDiv color={theme}>
             <Box component="form" noValidate autoComplete="off">
@@ -79,6 +90,17 @@ const FormComp = ({
                                 <div className="errorcheck">
                                     <small>{formik.errors.network}</small>
                                 </div>
+                            </div>
+                        ) : item.text === "phone" ? (
+                            <div className="phonebody">
+                                <PhoneInput
+                                    className="phone"
+                                    country="US"
+                                    placeholder="Enter phone number"
+                                    // value={values}
+                                    name={item.name}
+                                    onChange={setPhoneValue}
+                                />
                             </div>
                         ) : item.text ? (
                             <div className={`${item.classname}`}>
